@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
+import Home from './components/Home';
 import Activities from './components/Activities';
 import Leaderboard from './components/Leaderboard';
 import Teams from './components/Teams';
@@ -12,7 +13,7 @@ function App() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <NavLink className="navbar-brand" to="/">OctoFit Tracker</NavLink>
+          <NavLink className="navbar-brand" to="/" end>OctoFit Tracker</NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -47,7 +48,7 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<Leaderboard />} />
+        <Route path="/" element={<Home />} />
         <Route path="/users" element={<Users />} />
         <Route path="/teams" element={<Teams />} />
         <Route path="/activities" element={<Activities />} />
