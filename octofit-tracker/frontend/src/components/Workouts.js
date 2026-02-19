@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const CODESPACE_NAME = process.env.REACT_APP_CODESPACE_NAME;
-const API_BASE = CODESPACE_NAME
-  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
-
-const API_URL = `${API_BASE}/api/workouts/`;
+const API_URL = CODESPACE_NAME
+  ? `https://${CODESPACE_NAME}-8000.app.github.dev/api/workouts/`
+  : 'http://localhost:8000/api/workouts/';
 
 function Workouts() {
   const [workouts, setWorkouts] = useState([]);
