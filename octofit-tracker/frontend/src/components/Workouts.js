@@ -39,30 +39,26 @@ function Workouts() {
       {workouts.length === 0 ? (
         <p>No workouts found.</p>
       ) : (
-        <table className="table table-striped table-bordered">
-          <thead className="table-dark">
-            <tr>
-              <th>Name</th>
-              <th>Activity Type</th>
-              <th>Difficulty</th>
-              <th>Duration (min)</th>
-              <th>Est. Calories</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {workouts.map((workout) => (
-              <tr key={workout.id}>
-                <td>{workout.name}</td>
-                <td>{workout.activity_type}</td>
-                <td>{workout.difficulty}</td>
-                <td>{workout.duration}</td>
-                <td>{workout.calories_estimate}</td>
-                <td>{workout.description}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {workouts.map((workout) => (
+            <div className="col" key={workout.id}>
+              <div className="card h-100">
+                <div className="card-header bg-dark text-white">
+                  <strong>{workout.name}</strong>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{workout.description}</p>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item"><strong>Activity Type:</strong> {workout.activity_type}</li>
+                    <li className="list-group-item"><strong>Difficulty:</strong> {workout.difficulty}</li>
+                    <li className="list-group-item"><strong>Duration:</strong> {workout.duration} min</li>
+                    <li className="list-group-item"><strong>Est. Calories:</strong> {workout.calories_estimate}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

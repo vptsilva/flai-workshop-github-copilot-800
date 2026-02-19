@@ -5,6 +5,14 @@ const API_URL = CODESPACE_NAME
   ? `https://${CODESPACE_NAME}-8000.app.github.dev/api/activities/`
   : 'http://localhost:8000/api/activities/';
 
+function formatDate(dateStr) {
+  if (!dateStr) return 'N/A';
+  // Trim microseconds to milliseconds (6 decimal places → 3) for broad JS compatibility
+  const normalized = dateStr.replace(/(\.\d{3})\d+/, '$1');
+  const d = new Date(normalized);
+  return isNaN(d.getTime()) ? dateStr : d.toLocaleDateString();
+}
+
 function Activities() {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -56,7 +64,7 @@ function Activities() {
                 <td>{activity.duration}</td>
                 <td>{activity.distance ?? 'N/A'}</td>
                 <td>{activity.calories}</td>
-                <td>{new Date(activity.date).toLocaleDateString()}</td>
+                <td>{formatDate(activity.date)}</td>
               </tr>
             ))}
           </tbody>
